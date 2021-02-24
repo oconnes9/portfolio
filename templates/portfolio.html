@@ -1,0 +1,19 @@
+{% extends 'persistent.html' %}
+{% load static %}
+{% block title %}Portfolio{% endblock %}
+{% block content %}
+    <h1 class="heading" >My Portfolio</h1>
+    <div class="container-fluid">
+        <div class="row">
+            {% for item in listDirectories %}
+                <div class="col-md-10" style="
+                    margin: 0 auto;
+                    margin-top: 2rem;
+                ">
+                    <img src="{% static item.0 %}" class="img-fluid" alt={{item.0}}>
+                    <div class="imageCaption">{{item.1}}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

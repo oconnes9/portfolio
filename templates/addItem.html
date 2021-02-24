@@ -1,0 +1,33 @@
+{% extends 'persistent.html' %}
+{% block title %}Add Item{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6" style="
+            margin: 0 auto;
+            margin-top: 2rem;
+        ">
+            <h1 class="heading" >Add item to portfolio:</h1>
+            <form method="POST" action="{% url 'portfolioAddButton' %}">
+                {% csrf_token %}
+                <div class="form-group" style="margin-top: 1rem;">
+                    <label for="fileName" class="form-label">File Name</label>
+                    <input class="form-control" name="fileName" id="fileName">
+                </div>
+                <div class="form-group" style="margin-top: 1rem;">
+                    <label for="pictureName" class="form-label">Picture Name/Title</label>
+                    <input class="form-control" name="pictureName" id="pictureName">
+                </div>
+                <div class="form-group" style="margin-top: 1rem;">
+                    <label for="price" class="form-label">Price</label>
+                    <input  class="form-control" name="price" id="price" >
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" style="
+                    margin: 0 auto; display: block; margin-top: 2rem;">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

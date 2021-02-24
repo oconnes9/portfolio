@@ -1,0 +1,46 @@
+{% extends 'persistent.html' %}
+{% block title %}Contact{% endblock %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12" style="
+                margin: 0 auto;
+                margin-top: 2rem;
+            ">
+            <img src="{% static 'stephensGate.jpg' %}" class="img-fluid titleImage" alt="stephensGate">
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6" style="
+            margin: 0 auto;
+            margin-top: 2rem;
+        ">
+            <h1 class="heading" >Contact me</h1>
+            <form method="POST" action="{% url 'submitcontactform' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="fullName" style="margin-top: 1rem;" class="form-label">Name</label>
+                    <input class="form-control" name="fullName" id="fullName">
+                </div>
+                <div class="form-group" style="margin-top: 1rem;">
+                    <label for="emailAddress" class="form-label">Email address</label>
+                    <input type="email" class="form-control" name="emailAddress" id="emailAddress" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="form-group">
+                    <label for="message" style="margin-top: 1rem;" class="form-label">Query</label>
+                    <textarea class="form-control" name="message" placeholder="Leave your message here.." id="message" style="height: 150px"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" style="
+                    margin: 0 auto; display: block; margin-top: 2rem;">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

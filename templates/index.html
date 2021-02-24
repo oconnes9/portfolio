@@ -1,0 +1,33 @@
+{% extends 'persistent.html' %}
+{% load static %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12" style="
+                margin: 0 auto;
+                margin-top: 1rem;
+            ">
+                <img src="{% static 'stephensGate.jpg' %}" class="img-fluid titleImage" alt="stephensGate">
+                <div class="centered" style="
+                    font-family: Helvetica, Verdana;
+                    font-weight: bold;
+                    font-size: 70px;
+                    color: white;
+                "> Sean O'Connell</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row" style="margin-top: 4rem">
+            <div class="col-md-12">
+                <h1 class="heading">About</h1>
+                <p class="paragraph">
+                    Words words words
+                </p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
