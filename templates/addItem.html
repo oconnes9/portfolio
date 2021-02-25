@@ -8,8 +8,11 @@
             margin-top: 2rem;
         ">
             <h1 class="heading" >Add item to portfolio:</h1>
-            <form method="POST" action="{% url 'portfolioAddButton' %}">
+            <form enctype="multipart/form-data" method="post" action="{% url 'portfolioAddButton' %}">
                 {% csrf_token %}
+                <div class="form-group">
+                    <input  type="file" class="form-control-file" id="fileUpload" name="fileUpload">
+                </div>
                 <div class="form-group" style="margin-top: 1rem;">
                     <label for="fileName" class="form-label">File Name</label>
                     <input class="form-control" name="fileName" id="fileName">

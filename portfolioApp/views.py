@@ -14,45 +14,27 @@ def contact(request):
 def portfolio(request):
     items = models.Item.objects.all()
     listDirectories = [[item.fileName, item.pictureName, item.price] for item in items]
-    listNames = [item.pictureName for item in items]
-    listPrices = [item.price for item in items]
     contextDict = {
         "listDirectories": listDirectories
-        #"listNames": listNames,
-        #"listPrices": listPrices,
-        #"numEntries": len(items)
     }
-
-
-    NOTcontextDict = {}
-    #for item in items:
-     #   newDict = {"fileName": item.fileName, "pictureName": item.pictureName, "price": item.price}
-      #  contextDict[item.fileName] = newDict
-
-    print(contextDict)
-
-
-    contextList = [item for item in items]
-
 
     return render(request,'portfolio.html',context=contextDict)
 
 def portfolioAddButton(request):
     itemDict = {
+        "fileUpload": request.FILES['fileUpload'],
         "fileName": request.POST['fileName'],
         "pictureName": request.POST['pictureName'],
         "price": float(request.POST['price'])
     }
     newItem = models.Item(**itemDict)
+    newItem.handle_file()
     newItem.save()
 
-    return JsonResponse(itemDict)
+    return JsonResponse({"Message":"Success"})
 
 def portfolioAdd(request):
     return render(request,'addItem.html')
-
-#def findByFile(request, fileName):
-  #  items = models.Item.objects.get(fileName=fileName)
 
 def submitContactForm(request):
     formDict = {
