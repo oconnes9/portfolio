@@ -1,0 +1,11 @@
+{% extends 'persistent.html' %}
+{% block title %}Item Not Added{% endblock %}
+{% load static %}
+{% block content %}
+<h1 class="heading" >Could not add item</h1>
+<form action="{% url 'portfolioAdd' %}" method="get">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary" style="
+    margin: 0 auto; display: block; margin-top: 2rem;">Return to "Add Item"</button>
+</form>
+{% endblock %}

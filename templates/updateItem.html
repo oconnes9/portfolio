@@ -1,0 +1,37 @@
+{% extends 'persistent.html' %}
+{% block title %}Update Item{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6" style="
+            margin: 0 auto;
+            margin-top: 2rem;
+        ">
+            <h1 class="heading" >Update item in portfolio:</h1>
+            <form enctype="multipart/form-data" method="post" action="{% url 'portfolioUpdateButton' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="selectItem">Select Item</label>
+                    <select class="form-control" name="selectItem" id="selectItem">
+                        {% for item in listDirectories %}
+                            <option>{{item.0}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group" style="margin-top: 1rem;">
+                    <label for="pictureName" class="form-label">Picture Name/Title</label>
+                    <input class="form-control" name="pictureName" id="pictureName">
+                </div>
+                <div class="form-group" style="margin-top: 1rem;">
+                    <label for="price" class="form-label">Price</label>
+                    <input  class="form-control" name="price" id="price" >
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" style="
+                    margin: 0 auto; display: block; margin-top: 2rem;">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

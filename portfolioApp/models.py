@@ -36,5 +36,14 @@ class Item(models.Model):
             for chunk in self.fileUpload.chunks():
                 destination.write(chunk)
 
+    @classmethod
+    def getAllItems(cls):
+        items = cls.objects.all()
+        listDirectories = [[item.fileName, item.pictureName, item.price] for item in items]
+        contextDict = {
+            "listDirectories": listDirectories
+        }
+        return contextDict
+
 
     #Need method to find existing items and to add to database

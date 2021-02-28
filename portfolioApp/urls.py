@@ -9,5 +9,7 @@ urlpatterns = [
     path('portfolioAddButton',views.portfolioAddButton,name="portfolioAddButton"),
     path('submitcontactform',views.submitContactForm,name='submitcontactform'),
     path('portfolio/add',views.portfolioAdd,name="portfolioAdd"),
+    path('portfolioUpdateButton',views.portfolioUpdateButton,name="portfolioUpdateButton"),
+    path('portfolio/update',views.portfolioUpdate,name="portfolioUpdate"),
     #path('portfolio/find/<str:fileName>',views.findByFile,name='findByFile')
 ]
