@@ -1,0 +1,12 @@
+{% extends 'persistent.html' %}
+{% block title %}Message{% endblock %}
+{% load static %}
+{% block content %}
+<h1 class="heading" >{{message}}</h1>
+<form action="{% url action %}" method="get">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary" style="
+    margin: 0 auto; display: block; margin-top: 2rem;">Go back</button>
+</form>
+{% endblock %}
+

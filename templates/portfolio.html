@@ -10,8 +10,10 @@
                     margin: 0 auto;
                     margin-top: 2rem;
                 ">
-                    <img src="{% static item.0 %}" class="img-fluid" alt={{item.0}}>
-                    <div class="imageCaption">{{item.1}}</div>
+                    <a href="portfolio/item/{{item.0}}">
+                        <img src="{% static item.0 %}" class="img-fluid" alt={{item.0}}>
+                        <div class="imageCaption">{{item.1}}</div>
+                    </a>
                 </div>
             {% endfor %}
         </div>

@@ -1,0 +1,16 @@
+{% extends 'persistent.html' %}
+{% load static %}
+{% block title %}{{pictureName}}{% endblock %}
+{% block content %}
+<h1 class="heading" >{{pictureName}}</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10" style="
+                    margin: 0 auto;
+                    margin-top: 2rem;
+                ">
+            <img src="{% static fileName %}" class="img-fluid" alt={{filename}}>
+        </div>
+    </div>
+</div>
+{% endblock %}

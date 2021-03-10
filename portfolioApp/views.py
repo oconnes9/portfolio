@@ -15,6 +15,22 @@ def portfolio(request):
     contextDict = models.Item.getAllItems()
     return render(request,'portfolio.html',context=contextDict)
 
+def portfolioItem(request, name):
+    item = models.Item.objects.get(fileName=name)
+    contextDict = item.__dict__
+    return render(request, 'item.html',context=contextDict)
+
+def portfolioAdd(request):
+    return render(request,'addItem.html')
+
+def portfolioDelete(request):
+    contextDict = models.Item.getAllItems()
+    return render(request,'deleteItem.html',context=contextDict)
+
+def portfolioUpdate(request):
+    contextDict = models.Item.getAllItems()
+    return render(request,'updateItem.html',context=contextDict)
+
 def portfolioAddButton(request):
     itemDict = {
         "fileUpload": request.FILES['fileUpload'],
@@ -22,32 +38,48 @@ def portfolioAddButton(request):
         "pictureName": request.POST['pictureName'],
         "price": float(request.POST['price'])
     }
+    contextDict = {
+        "action": "portfolioAdd"
+    }
     try:
         newItem = models.Item(**itemDict)
         newItem.handle_file()
         newItem.save()
-        return render(request,'addItemSuccess.html')
+        contextDict["message"] = "Item Added!"
+        return render(request,'itemUpdateMessage.html',context=contextDict)
     except:
-        return render(request, 'addItemFailure.html')
+        contextDict["message"] = "Could not add item"
+        return render(request, 'itemUpdateMessage.html',context=contextDict)
 
-def portfolioAdd(request):
-    return render(request,'addItem.html')
-
-def portfolioUpdate(request):
-    contextDict = models.Item.getAllItems()
-    return render(request,'updateItem.html',context=contextDict)
 
 def portfolioUpdateButton(request):
-
-
+    contextDict = {
+        "action": "portfolioUpdate"
+    }
     try:
         item = models.Item.objects.get(fileName=request.POST['selectItem'])
         item.pictureName = request.POST['pictureName']
         item.price = float(request.POST['price'])
         item.save()
-        return render(request, 'updateItemSuccess.html')
+        contextDict["message"] = "Item Updated!"
+        return render(request, 'itemUpdateMessage.html', context=contextDict)
     except:
-        return render(request, 'updateItemFailure.html')
+        contextDict["message"] = "Could not update item"
+        return render(request, 'itemUpdateMessage.html', context=contextDict)
+
+def portfolioDeleteButton(request):
+    contextDict = {
+        "action": "portfolioDelete"
+    }
+    try:
+        item = models.Item.objects.get(fileName=request.POST['selectItem'])
+        item.delete()
+        contextDict["message"] = "Item Deleted!"
+        return render(request, 'itemUpdateMessage.html', context=contextDict)
+    except:
+        contextDict["message"] = "Could not delete item"
+        return render(request, 'itemUpdateMessage.html', context=contextDict)
+
 
 def submitContactForm(request):
     formDict = {

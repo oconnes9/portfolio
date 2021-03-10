@@ -1,0 +1,29 @@
+{% extends 'persistent.html' %}
+{% block title %}Delete Item{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6" style="
+            margin: 0 auto;
+            margin-top: 2rem;
+        ">
+            <h1 class="heading" >Delete item from portfolio:</h1>
+            <form enctype="multipart/form-data" method="post" action="{% url 'portfolioDeleteButton' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="selectItem">Select Item</label>
+                    <select class="form-control" name="selectItem" id="selectItem">
+                        {% for item in listDirectories %}
+                            <option>{{item.0}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" style="
+                    margin: 0 auto; display: block; margin-top: 2rem;">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

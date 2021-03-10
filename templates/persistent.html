@@ -23,9 +23,9 @@
       }
       .centered {
         position: absolute;
-        top: 65%;
+        top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%,-50%);
       }
       .rcorners1 {
         height: 100px;
@@ -81,6 +81,16 @@
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="{% url 'portfolio' %}">Photography</a></li>
                 <li><a class="dropdown-item" href="{% url 'portfolio' %}">Paintings</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Admin
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="{% url 'portfolioAdd' %}">Add item</a></li>
+                <li><a class="dropdown-item" href="{% url 'portfolioUpdate' %}">Update item</a></li>
+                <li><a class="dropdown-item" href="{% url 'portfolioDelete' %}">Delete item</a></li>
               </ul>
             </li>
           </ul>
