@@ -15,6 +15,7 @@ A website to display my photography. Created using Python, Django, SQL, HTML and
 * "Contact me" functionality that sends an email to me with query
 * Authentication for admin page
 * Refactoring forms to be of Django form class as opposed to Bootstrap forms
+* Adding filter search functionality to portfolio page i.e. filter by location etc.
 
 ## Future possibilities
 * Adding payment feature so that people can buy prints
